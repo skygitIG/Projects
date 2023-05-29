@@ -1,0 +1,213 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Roboto:wght@500&display=swap");
+
+* {
+  position: relative;
+  box-sizing: border-box;
+}
+
+:root {
+  --background: #000000;
+  --background-shadow: #6f5947;
+  --line: #000000;
+}
+
+html {
+  background-color: var(--background);
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  height: 100%;
+}
+
+h1 {
+  font-family: "Comfortaa", cursive;
+  color: #86ea30;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  min-height: 100%;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+main h1 {
+  text-align: center;
+}
+
+.game-board {
+  display: grid;
+  --line-size: 1vmin;
+  grid-template-rows: 1fr var(--line-size) 1fr var(--line-size) 1fr;
+  grid-template-columns: 1fr var(--line-size) 1fr var(--line-size) 1fr;
+  padding: 3vmin;
+  border-radius: 1.5vmin;
+  width: 50vmin;
+  height: 50vmin;
+  background-color: #3dbd88c2;
+}
+
+.game-board .tile {
+  display: grid;
+  place-items: center;
+  font-size: 12vmin;
+  line-height: 1;
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  transition: 0.15s linear;
+  transition-property: opacity, background-color;
+}
+
+.game-board .tile::before,
+.game-board .tile::after {
+  content: attr(data-player);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  -webkit-animation-duration: 0.6s;
+  animation-duration: 0.6s;
+  -webkit-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+  transform-style: preserve-3d;
+}
+
+.game-board .tile::before {
+  text-shadow: 0 0 0.1em var(--background-shadow);
+}
+
+.game-board .tile[data-player]::before {
+  -webkit-animation-name: shadow-in;
+  animation-name: shadow-in;
+}
+
+@-webkit-keyframes shadow-in {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+@keyframes shadow-in {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+.game-board .tile[data-player]::after {
+  color: black;
+  text-shadow: 0 0 0.1em var(--background-shadow);
+  -webkit-animation-name: tile-in;
+  animation-name: tile-in;
+  transform: translateZ(3px) scale(1);
+}
+
+@-webkit-keyframes tile-in {
+  from {
+    opacity: 0;
+    transform: translateZ(80px) scale(1.25);
+  }
+}
+
+@keyframes tile-in {
+  from {
+    opacity: 0;
+    transform: translateZ(80px) scale(1.25);
+  }
+}
+
+.game-board .tile[data-player=o]::after {
+  color: white;
+}
+
+.game-board .line {
+  width: 100%;
+  height: 100%;
+  background: var(--line);
+  border-radius: var(--line-size);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+  transform: translateZ(1px);
+  transition: background-color 0.3s linear;
+}
+
+.game-board .line[data-line="0"] {
+  grid-column: 2;
+  grid-row: 1/-1;
+}
+
+.game-board .line[data-line="1"] {
+  grid-column: 4;
+  grid-row: 1/-1;
+}
+
+.game-board .line[data-line="2"] {
+  grid-column: 1/-1;
+  grid-row: 2;
+}
+
+.game-board .line[data-line="3"] {
+  grid-column: 1/-1;
+  grid-row: 4;
+}
+
+.game-board[data-state=playing] .tile:not([data-player]) {
+  cursor: pointer;
+}
+
+.game-board[data-state=playing] .tile:not([data-player]):hover,
+.game-board[data-state=playing] .tile:not([data-player]):focus {
+  background: #fff6;
+}
+
+.game-board[data-state=draw] {
+  --line: #d9422c;
+}
+
+.game-board[data-state=winner] {
+  --line: #86ea30;
+}
+
+.game-board[data-state=winner] .tile {
+  opacity: 0.2;
+}
+
+.game-board[data-state=winner] .tile[data-winning=true] {
+  opacity: 1;
+}
+
+pre {
+  font-weight: bold;
+}
+
+.reset {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-size: 1.5rem;
+  border: solid 0.2rem;
+  border-radius: 0.5rem;
+  color: var(--background-shadow);
+  background: var(--background);
+  padding: 0.5rem 2rem;
+  text-transform: uppercase;
+  margin-top: 2rem;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  z-index: 100;
+}
