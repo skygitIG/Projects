@@ -1,0 +1,119 @@
+
+
+/* Font Size */
+
+
+.lead {
+    font-size: 20px;
+}
+
+.xs {
+    font-size: .8em;
+}
+
+.sm {
+    font-size: 1rem;
+}
+
+.md {
+    font-size: 2rem;
+}
+
+.lg {
+    font-size: 3rem;
+}
+
+.xl {
+    font-size: 4rem;
+}
+
+
+/* Margin */
+
+.my-0 {
+    margin: .5em 0;
+}
+
+.my-1 {
+    margin: 1rem 0;
+}
+
+.my-2 {
+    margin: 1.5rem 0;
+}
+
+.my-3 {
+    margin: 2rem 0;
+}
+
+.my-4 {
+    margin: 3rem 0;
+}
+
+.my-5 {
+    margin: 4rem 0;
+}
+
+.m-1 {
+    margin: 1rem;
+}
+
+.m-2 {
+    margin: 1.5rem;
+}
+
+.m-3 {
+    margin: 2rem;
+}
+
+.m-4 {
+    margin: 3rem;
+}
+
+.m-5 {
+    margin: 4rem;
+}
+
+/* Padding */
+
+
+
+.py-1 {
+    padding: 1rem 0;
+}
+
+.py-2 {
+    padding: 1.5rem 0;
+}
+
+.py-3 {
+    padding: 2rem 0;
+}
+
+.py-4 {
+    padding: 3rem 0;
+}
+
+.py-5 {
+    padding: 4rem 0;
+}
+
+.p-1 {
+    padding: 1rem;
+}
+
+.p-2 {
+    padding: 1.5rem;
+}
+
+.p-3 {
+    padding: 2rem;
+}
+
+.p-4 {
+    padding: 3rem;
+}
+
+.p-5 {
+    padding: 4rem;
+}
