@@ -1,0 +1,75 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-color: AntiqueWhite;
+  --text-color: black;
+  --scroll-pct: 0;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  transition: background-color 1s, color 1s;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.h-track {
+  width: 100%;
+  height: 100vh;
+  overflow-x: auto;
+  position: relative;
+  overflow-y: hidden;
+}
+
+.h-track .h-content-container {
+  position: relative;
+  max-width: unset;
+  width: fit-content;
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+  transition: transform 0.2s linear;
+}
+
+.h-track .h-content-container>* {
+  display: grid;
+  place-items: Center;
+  min-width: 100vw;
+  height: 100%;
+}
+
+.invisible-scrollbar {
+  scrollbar-width: none;
+}
+
+.invisible-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.progress-bar {
+  margin: 10px auto;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 100%;
+  max-width: 50%;
+  height: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--text-color);
+  overflow: hidden;
+}
+
+.progress-bar::before {
+  content: "";
+  display: block;
+  background-color: var(--text-color);
+  height: 100%;
+  width: var(--scroll-pct);
+}
